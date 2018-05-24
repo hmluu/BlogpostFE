@@ -9,9 +9,15 @@ window.addEventListener('load', () => {
     event.preventDefault();
     const title = document.querySelector('#input-title').value;
     const content = document.querySelector('#textarea-content').value;
-    console.log({title, content});
-    axios.post(baseURL, {title, content})
-      .then( response => {
+    console.log({
+      title,
+      content
+    });
+    axios.post(baseURL, {
+        title,
+        content
+      })
+      .then(response => {
         loadTitles();
         showBlogpost(response.data);
       })
@@ -31,36 +37,41 @@ window.addEventListener('load', () => {
     document.querySelector('#create-button').addEventListener('click', createBlogpost);
   }
   const editBlogpost = blogpost => {
-    mainPanelEl.innerHTML = document.querySelector('#main-panel').value;
-    mainPanelEl.innerHTML = `<h3>New Blog Post</h3>
+
+    mainPanelEl.innerHTML = `<h3>Edit Blog Post</h3>
     <form>
     <label for="title">Title</label>
-    <input type="text" name="title" id="input-title" /><br><br>
+    <input type="text" name="title" id="input-title-edit" /><br><br>
     <label for="content">Content</label>
-    <textarea name="content" id="textarea-content"></textarea><br><br>
-    <button id="create-button">Create</button>
+    <textarea name="content" id="textarea-content-edit"></textarea><br><br>
+    <button id="update-button">Update</button>
     </form>`
-    const updateButtonEl = document.createElement('button');
-    updateButtonEl.id = 'update-button';
-    updateButtonEl.innerHTML = 'Update';
 
-  } //stuff in edit boxes, update post button
+    document.querySelector('#input-title-edit').value = blogpost.title;
+    document.querySelector('#textarea-content-edit').value = blogpost.content;
+    document.querySelector('#update-button').addEventListener('click', () => {
+      updateBlogpost(blogpost)});
+    } //stuff in edit boxes, update post button
 
   const deleteBlogpost = blogpost => {
-      axios.delete(baseURL, {title, id, content})
+    axios.delete(`${baseURL}/${blogpost.id}`)
       .then(response => {
         loadTitles();
-        showBlogpost(response.data);
+        mainPanelEl.innerHTML = "";
       })
       .catch(error => console.error(error));
   }
   const updateBlogpost = blogpost => {
-    axios.put(baseURL, {title, content})
-    .then( response => {
-      loadTitles();
-      showBlogpost(response.data);
-    })
-    .catch(error => console.error(error));
+    event.preventDefault();
+    const title = document.querySelector('#input-title-edit').value;
+    const content = document.querySelector('#textarea-content-edit').value;
+    axios.put(`${baseURL}/${blogpost.id}`, {title, content})
+      .then(response => {
+        loadTitles();
+        console.log(response);
+        showBlogpost(response.data);
+      })
+      .catch(error => console.error(error));
   }
 
   const showBlogpost = (blogpost) => {
@@ -90,7 +101,6 @@ window.addEventListener('load', () => {
   const loadTitles = () => {
     axios.get(`http://localhost:3001/blogposts`)
       .then(response => {
-        console.log(response);
         blogpostTitlesListEl.innerHTML = "";
         response.data.forEach(blogpost => {
           const blogpostTitleEl = document.createElement('li');
