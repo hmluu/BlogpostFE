@@ -18,6 +18,7 @@ window.addEventListener('load', () => {
       .catch(error => console.error(error));
   }
 
+
   const newBlogpost = () => {
     mainPanelEl.innerHTML = `<h3>New Blog Post</h3>
     <form>
@@ -28,6 +29,38 @@ window.addEventListener('load', () => {
     <button id="create-button">Create</button>
     </form>`
     document.querySelector('#create-button').addEventListener('click', createBlogpost);
+  }
+  const editBlogpost = blogpost => {
+    mainPanelEl.innerHTML = document.querySelector('#main-panel').value;
+    mainPanelEl.innerHTML = `<h3>New Blog Post</h3>
+    <form>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="input-title" /><br><br>
+    <label for="content">Content</label>
+    <textarea name="content" id="textarea-content"></textarea><br><br>
+    <button id="create-button">Create</button>
+    </form>`
+    const updateButtonEl = document.createElement('button');
+    updateButtonEl.id = 'update-button';
+    updateButtonEl.innerHTML = 'Update';
+
+  } //stuff in edit boxes, update post button
+
+  const deleteBlogpost = blogpost => {
+      axios.delete(baseURL, {title, id, content})
+      .then(response => {
+        loadTitles();
+        showBlogpost(response.data);
+      })
+      .catch(error => console.error(error));
+  }
+  const updateBlogpost = blogpost => {
+    axios.put(baseURL, {title, content})
+    .then( response => {
+      loadTitles();
+      showBlogpost(response.data);
+    })
+    .catch(error => console.error(error));
   }
 
   const showBlogpost = (blogpost) => {

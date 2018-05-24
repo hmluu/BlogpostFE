@@ -1,9 +1,9 @@
 * {
-  front-family: helvetica;
+  font-family: arial;
 }
 
 body {
-  background-color: lightblue;
+  background-color: plum;
 }
 #blogpost-titles {
   float: left;
