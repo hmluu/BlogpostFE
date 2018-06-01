@@ -10,6 +10,10 @@ window.addEventListener('load', () => {
     const year = document.querySelector('#year').value;
     const rating = document.querySelector('#rating').value;
     const poster_url = document.querySelector('#poster_url').value;
+
+  axios.post(baseURL, {title, director, year, rating, poster_url})
+    .then(result => {showMovie(result.data);})
+    .catch(error => {console.error(error);});
   }
 
   const newMovie = () => {
@@ -48,6 +52,9 @@ window.addEventListener('load', () => {
 
   const deleteMovie = id => {
     console.log('deleting movie no', id);
+    axios.delete(`${baseURL}/${id}`)
+      .then(result => {allMovies();})
+      .catch(error => console.error(error));
   }
 
   const showMovie = movie => {
@@ -70,7 +77,7 @@ window.addEventListener('load', () => {
             <td>${movie.rating}</td>
           </tr>
           </table>
-;`
+`
   }
 
 
