@@ -42,12 +42,56 @@ window.addEventListener('load', () => {
       </div>
         <button type="submit" class="btn btn-primary" id="create-movie">Create</button>
     </form>`;
+
     document.querySelector('#create-movie').addEventListener('click', createMovie);
+  }
+
+  const updateMovie = id => {
+    event.preventDefault();
+    const title = document.querySelector('#edit-title').value;
+    const director = document.querySelector('#edit-director').value;
+    const year = document.querySelector('#edit-year').value;
+    const rating = document.querySelector('#edit-rating').value;
+    const poster_url = document.querySelector('#edit-poster_url').value;
+    axios.put(`${baseURL}/${id}`, {title, director, year, rating, poster_url})
+    .then(result => {showMovie(result.data);})
+    .catch(error => {console.error(error);});
   }
 
   const editMovie = movie => {
     console.log('editing movie');
     console.log(movie);
+    document.querySelector('#app').innerHTML = `
+    <form>
+      <div class="form-group">
+        <label for="edit-title">Title</label>
+        <input type="text" id="edit-title" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-director">Director</label>
+        <input type="text" id="edit-director" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-year">Year</label>
+        <input type="text" id="edit-year" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-rating">Rating</label>
+        <input type="text" id="edit-rating" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-poster_url">Poster URL</label>
+        <input type="text" id="edit-poster_url" class="form-control" />
+      </div>
+        <button type="submit" class="btn btn-primary" id="update-movie">Update</button>
+    </form>`;
+    document.querySelector('#edit-title').value = movie.title;
+    document.querySelector('#edit-director').value = movie.director;
+    document.querySelector('#edit-year').value = movie.year;
+    document.querySelector('#edit-rating').value = movie.rating;
+    document.querySelector('#edit-poster_url').value = movie.poster_url;
+    document.querySelector('#update-movie').addEventListener('click', () => {updateMovie(movie.id);});
+
   }
 
   const deleteMovie = id => {
