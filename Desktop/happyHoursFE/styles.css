@@ -4,15 +4,26 @@ body {
 }
 
 .nav-wrapper {
-  background-color: black;
+  background-color: white;
 }
 
+#app-start{
+  color: black;
+#app-start:hover {
+
+}
+}
 ul li:hover, ul li:focus {
  color:red;
 }
-
+#search{
+  color: black;
+}
 #search:hover {
   color:red;
+}
+#add-specials {
+  color: black;
 }
 #add-specials:hover{
   color:red;
@@ -28,7 +39,7 @@ li {
 
 h5 {
   padding-top: 40px;
-  color: red;
+  color: black;
   font-size: 45px;
 }
 
@@ -55,5 +66,5 @@ color: red;
   padding-top: 70px;
 }
 #spot-names {
-  border: solid;
+
 }
