@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HappyJC</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center" id="app-start">&nbsp&nbsp&nbspHappy Hours, JC</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#" id="add-specials" <i class="material-icons">add</i></a></li>
+        <li><a href="#" id="search"<i class="material-icons">search</i></a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <div class="row" id="lists">
+    <div class="col s3">
+      <h5>&nbsp&nbspThe Spots</h5>
+      <div id="spot-names">
+        <ul id="spot-names-list"></ul>
+      </div>
+    </div>
+    <div class="col s9" id="info">
+      <div id="main-panel"></div>
+    </div>
+  </div>
+
+
+  <script src="./axios.js" type="text/javascript"></script>
+  <script src="./app.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+
+</html>

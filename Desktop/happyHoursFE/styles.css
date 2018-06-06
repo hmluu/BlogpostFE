@@ -1,0 +1,59 @@
+body {
+  font-family: times, sans-serif;
+  background-color: lightgray;
+}
+
+.nav-wrapper {
+  background-color: black;
+}
+
+ul li:hover, ul li:focus {
+ color:red;
+}
+
+#search:hover {
+  color:red;
+}
+#add-specials:hover{
+  color:red;
+}
+
+li {
+  padding-left: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+
+h5 {
+  padding-top: 40px;
+  color: red;
+  font-size: 45px;
+}
+
+.h5{
+  font-size: 20px;
+}
+
+label {
+color: red;
+}
+
+.h3 {
+  padding-top: 65px;
+  font-size: 30px;
+  font-style: bold;
+  color: red;
+}
+
+#top-spot {
+  padding-top: 70px;
+}
+
+#top-spot2 {
+  padding-top: 70px;
+}
+#spot-names {
+  border: solid;
+}
