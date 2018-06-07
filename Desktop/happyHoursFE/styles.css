@@ -1,32 +1,57 @@
 body {
-  font-family: times, sans-serif;
-  background-color: lightgray;
+background-image: url("https://images.unsplash.com/photo-1527628126150-086ff233b951?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9d018be2277453d0e3ee937d471db603&auto=format&fit=crop&w=1950&q=80x");
+}
+
+body .row{
+  background-color: rgba(300, 300, 300, 0.7);
+
 }
 
 .nav-wrapper {
   background-color: white;
+  align-items: center;
 }
+#nav-mobile {
+  padding-right: 30px;
 
+}
 #app-start{
   color: black;
-#app-start:hover {
-
+  font-family: "shadows into light", sans-serif;
 }
+#app-start:hover{
+  color: #ED5C07;
 }
 ul li:hover, ul li:focus {
- color:red;
+ color:#ED5C07;
+}
+
+input {
+  color: white;
 }
 #search{
   color: black;
 }
 #search:hover {
-  color:red;
+  color:#ED5C07;
 }
 #add-specials {
   color: black;
 }
 #add-specials:hover{
-  color:red;
+  color:#ED5C07;
+}
+#account{
+  color: black;
+}
+#account:hover{
+  color: #ED5C07;
+}
+#login{
+  color: black;
+}
+#login:hover{
+  color: #ED5C07;
 }
 
 li {
@@ -39,32 +64,44 @@ li {
 
 h5 {
   padding-top: 40px;
-  color: black;
-  font-size: 45px;
+  color: #ED5C07;
+  font-size: 40px;
+  font-family: helvetica, sans-serif;
 }
 
 .h5{
   font-size: 20px;
+  color: white;
+  align-items: center;
 }
-
 label {
-color: red;
+color: #ED5C07;
 }
-
 .h3 {
   padding-top: 65px;
   font-size: 30px;
   font-style: bold;
-  color: red;
+  color: #ED5C07;
+  align-items: center;
 }
-
 #top-spot {
   padding-top: 70px;
 }
-
 #top-spot2 {
   padding-top: 70px;
 }
-#spot-names {
-
+#main-image{
+  width: 600px;
+}
+#edit-button{
+  background-color: #ED5C07;
+}
+#delete-button{
+  background-color: #ED5C07;
+}
+#add-button{
+  background-color: #ED5C07;
+}
+#submit-button{
+  background-color: #ED5C07;
 }

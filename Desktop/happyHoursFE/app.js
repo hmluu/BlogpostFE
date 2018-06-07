@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
   console.log('Ready to Ajaxxxx!');
 
+
   const spotNamesListEl = document.querySelector('#spot-names-list');
   const mainPanelEl = document.querySelector('#main-panel');
   const baseURL = 'http://localhost:3004/happyHours';
@@ -73,11 +74,12 @@ window.addEventListener('load', () => {
         specials
       })
       .then(result => {
-      showSpecial(result.data);
+        showSpecial(result.data);
       })
       .catch(error => {
-        console.error(error);})
-}
+        console.error(error);
+      })
+  }
 
   const editSpecial = happyHour => {
     document.querySelector('#main-panel').innerHTML = `
@@ -133,7 +135,7 @@ window.addEventListener('load', () => {
     <div class="h5">${happyHour.specials}</div>
     <a class="waves-effect waves-light btn-small" id="edit-button"><i class="material-icons left">edit</i>Edit</a>
 
-    <a class="waves-effect waves-light btn" id="delete-button"><i class="material-icons left">remove_circle</i>Delete</a>
+    <a class="waves-effect waves-light btn-small" id="delete-button"><i class="material-icons left">remove_circle</i>Delete</a>
     `
     document.querySelector('#edit-button').addEventListener('click', () => {
       editSpecial(happyHour)
@@ -143,9 +145,27 @@ window.addEventListener('load', () => {
     });
 
   }
-  // const searchFunc = () => {
-  //
-  // }
+
+  const createAccount = () => {
+    mainPanelEl.innerHTML = `
+    <div class="row" id="new-acc">
+    <form class="col s12">
+      <div class="row">
+      <div class="input-field col s6">
+      <i class="material-icons prefix">username</i>
+      <input id="icon_telephone" type="tel" class="validate">
+      <label for="icon_telephone">Email</label>
+      </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Password</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="submit-button">Submit</button>
+    </form>
+  </div>`;
+  }
   const allSpecials = () => {
     mainPanelEl.innerHTML = "";
     axios.get(`http://localhost:3004/happyHours`)
@@ -165,12 +185,17 @@ window.addEventListener('load', () => {
       });
   }
 
+
   document.querySelector('#app-start').addEventListener('click', allSpecials);
   allSpecials();
+
   document.querySelector('#add-specials').addEventListener('click', newSpecial);
   newSpecial();
 
-  document.querySelector('#search').addEventListener('click',searchFunc);
+  document.querySelector('#account').addEventListener('click', createAccount);
+
+
+
 
 
 });
